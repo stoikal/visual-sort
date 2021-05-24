@@ -26,7 +26,7 @@ template.innerHTML = `
 
 class ArrayItem extends HTMLElement {
   static get observedAttributes() {
-    return ['value', 'position']
+    return ['value', 'position', 'max-value']
   }
 
   constructor() {
@@ -41,13 +41,14 @@ class ArrayItem extends HTMLElement {
     this._defaultMaxValue = 10;
   }
 
-  // get maxValue() {
-  //   return this.getAttribute('max-value');
-  // }
+  get maxValue() {
+    return this.getAttribute('max-value');
+  }
   
-  // set maxValue(newValue) {
-  //   this.setAttribute('max-value', newValue);
-  // }
+  set maxValue(newValue) {
+    console.log('set maxValue')
+    this.setAttribute('max-value', newValue);
+  }
 
   get value() {
     return this.getAttribute('value');
@@ -71,11 +72,12 @@ class ArrayItem extends HTMLElement {
 
   attributeChangedCallback(name, prevVal, newVal) {
     if (name === 'max-value') {
+      console.log(newVal)
       this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
     } else if (name === "position") {
       this.$verticalBar.style['grid-column-start'] = newVal;
     } else if (name === "value") {
-      this.$node.style['grid-row-start'] = this.maxValue + 1 - Number(newVal);
+      this.$node.style['grid-row-start'] = Number(this.maxValue) + 1 - Number(newVal);
     }
   }
 }

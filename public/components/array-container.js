@@ -36,9 +36,7 @@ class ArrayContainer extends HTMLElement {
   }
 
   attributeChangedCallback(name, prevVal, newVal) {
-    console.log(this.$container)
     this.$container.style['grid-template-columns'] = `repeat(${newVal}, 1fr)`
-    console.log(this.$container, 'bla')
   }
 }
 

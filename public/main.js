@@ -2,7 +2,7 @@ import './components/array-container.js'
 import './components/array-item.js'
 
 const ARRAY_LENGTH = 10;
-const MAX_VALUE = 13;
+const MAX_VALUE = 10;
 
 const getRandomInt = (n) => Math.floor(Math.random() * n) + 1;
 
