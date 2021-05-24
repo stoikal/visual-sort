@@ -38,15 +38,15 @@ class ArrayItem extends HTMLElement {
     this.$verticalBar = this._shadowRoot.querySelector('.vertical-bar');
     this.$node = this._shadowRoot.querySelector('.node');
 
-    // this.maxValue = 10;
+    this._defaultMaxValue = 10;
   }
 
   // get maxValue() {
-  //   return this.getAttribute('max-val');
+  //   return this.getAttribute('max-value');
   // }
   
   // set maxValue(newValue) {
-  //   this.setAttribute('max-val', newValue);
+  //   this.setAttribute('max-value', newValue);
   // }
 
   get value() {
@@ -65,9 +65,13 @@ class ArrayItem extends HTMLElement {
     this.setAttribute('position', newValue);
   }
 
+  connectedCallback() {
+    this.$verticalBar.maxValue = this._defaultMaxValue;
+  }
+
   attributeChangedCallback(name, prevVal, newVal) {
-    if (name === 'max-val') {
-      // this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
+    if (name === 'max-value') {
+      this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
     } else if (name === "position") {
       this.$verticalBar.style['grid-column-start'] = newVal;
     } else if (name === "value") {
