@@ -6,13 +6,12 @@ template.innerHTML = `
       grid-template-columns: 1fr;
       grid-template-rows: repeat(10, 1fr);
       grid-column-start: 1;
-      
     }
 
     .node {
-      height: 6px; 
-      width: 6px;
-      grid-row-start: 100;
+      height: 5px; 
+      width: 5px;
+      grid-row-start: 1;
       background: red;
     }
 
@@ -46,7 +45,6 @@ class ArrayItem extends HTMLElement {
   }
   
   set maxValue(newValue) {
-    console.log('set maxValue')
     this.setAttribute('max-value', newValue);
   }
 
@@ -72,12 +70,13 @@ class ArrayItem extends HTMLElement {
 
   attributeChangedCallback(name, prevVal, newVal) {
     if (name === 'max-value') {
-      console.log(newVal)
       this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
     } else if (name === "position") {
       this.$verticalBar.style['grid-column-start'] = newVal;
     } else if (name === "value") {
-      this.$node.style['grid-row-start'] = Number(this.maxValue) + 1 - Number(newVal);
+      const rowStart = Number(this.maxValue) + 1 - Number(newVal);
+      this.$node.style['grid-row-start'] = rowStart;
+      this.$node.style['grid-row-end'] = `span 1`;
     }
   }
 }

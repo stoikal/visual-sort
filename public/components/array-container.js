@@ -3,9 +3,9 @@ template.innerHTML = `
   <style>
     .container {
       display: grid;
-      grid-template-columns: repeat(100, 1fr);
+      grid-template-columns: repeat(10, 1fr);
       height: 100%;
-      background: #bdbdbd
+      background: #bdbdbd;
     }
   </style>
   <div class="container">
