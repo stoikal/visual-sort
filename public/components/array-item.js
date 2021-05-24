@@ -1,4 +1,6 @@
 const template = document.createElement('template');
+const NODE_SIZE = 2;
+
 template.innerHTML = `
   <style>
     .vertical-bar {
@@ -6,11 +8,12 @@ template.innerHTML = `
       grid-template-columns: 1fr;
       grid-template-rows: repeat(10, 1fr);
       grid-column-start: 1;
+      height: 50px;
     }
 
     .node {
-      height: 5px; 
-      width: 5px;
+      min-height: ${NODE_SIZE}px; 
+      min-width: ${NODE_SIZE}px;
       grid-row-start: 1;
       background: red;
     }
@@ -25,7 +28,7 @@ template.innerHTML = `
 
 class ArrayItem extends HTMLElement {
   static get observedAttributes() {
-    return ['value', 'position', 'max-value']
+    return ['value', 'max-value', 'color']
   }
 
   constructor() {
@@ -56,12 +59,12 @@ class ArrayItem extends HTMLElement {
     this.setAttribute('value', newValue);
   }
 
-  get position() {
-    return this.getAttribute('position');
+  get color() {
+    return this.getAttribute('color');
   }
   
-  set position(newValue) {
-    this.setAttribute('position', newValue);
+  set color(newValue) {
+    this.setAttribute('color', newValue);
   }
 
   connectedCallback() {
@@ -70,13 +73,15 @@ class ArrayItem extends HTMLElement {
 
   attributeChangedCallback(name, prevVal, newVal) {
     if (name === 'max-value') {
+      const maxVal = Number(newVal)
       this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
-    } else if (name === "position") {
-      this.$verticalBar.style['grid-column-start'] = newVal;
+      this.$verticalBar.style['height'] = `${maxVal * NODE_SIZE}px`;
+      this.$node.style['grid-row-end'] = maxVal + 1;
+    } else if (name === "color") {
+      this.$node.style['background-color'] = newVal;
     } else if (name === "value") {
       const rowStart = Number(this.maxValue) + 1 - Number(newVal);
       this.$node.style['grid-row-start'] = rowStart;
-      this.$node.style['grid-row-end'] = `span 1`;
     }
   }
 }
