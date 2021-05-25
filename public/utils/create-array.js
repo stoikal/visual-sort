@@ -22,5 +22,7 @@ for (let i = 0; i < ARRAY_LENGTH; i++) {
 
 export default {
   element: $arrayContainer,
-  itemRefs
+  itemRefs,
+  ARRAY_LENGTH,
+  MAX_VALUE
 }

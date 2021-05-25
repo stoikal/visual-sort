@@ -1,5 +1,5 @@
 const template = document.createElement('template');
-const NODE_SIZE = 2;
+const NODE_SIZE = 6;
 
 template.innerHTML = `
   <style>

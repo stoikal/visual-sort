@@ -18,7 +18,7 @@ const $mergeSortBtn = document.querySelector('#merge-sort');
 
 $randomizeBtn.addEventListener('click', () => {
   array.itemRefs.forEach((item) => {
-    item.setAttribute('value', getRandomInt(MAX_VALUE));
+    item.setAttribute('value', getRandomInt(array.MAX_VALUE));
   });
 });
 

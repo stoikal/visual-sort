@@ -10,12 +10,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "live-server": "^1.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.3"
+    "eslint-plugin-import": "^2.23.3",
+    "live-server": "^1.2.1"
   }
 }
