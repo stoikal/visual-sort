@@ -11,21 +11,21 @@ export default class Visual {
   }
 
   _clear() {
-    while (this.$arrayContainer.firstChild) {
-      this.$arrayContainer.removeChild(this.$arrayContainer.firstChild);
-    }
+    this.$parentEl.removeChild(this.$arrayContainer);
+
+    this.init();
   }
 
   async render(array, highlighted) {
     this._clear();
     this.$arrayContainer.length = array.length;
 
-    array.forEach((value, i) => {
+    array.forEach((value) => {
       const $newArrayItem = document.createElement('array-item');
       $newArrayItem.maxValue = this.maxValue;
       $newArrayItem.value = value;
 
-      if (i === highlighted) {
+      if (value === highlighted) {
         $newArrayItem.color = 'blue';
       }
 
