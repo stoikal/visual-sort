@@ -16,7 +16,7 @@ const visual = new Visual($outerContainer, ARRAY_LENGTH);
 const myArray = new MyArray(ARRAY_LENGTH);
 
 visual.init();
-visual.render(myArray.ref);
+// visual.render(myArray.ref);
 
 $shuffleBtn.addEventListener('click', () => {
   myArray.shuffle();
