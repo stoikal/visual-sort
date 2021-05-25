@@ -1,4 +1,5 @@
 import bubbleSort from './sort/bubble.js';
+import mergeSort from './sort/merge.js';
 
 export default class MyArray {
   constructor(length) {
@@ -30,6 +31,14 @@ export default class MyArray {
   }
 
   async bubbleSort(render) {
-    bubbleSort(this.ref, render);
+    const startTime = new Date().getTime();
+    console.log('bubble sort starts');
+    await bubbleSort(this.ref, render);
+    console.log('bubble sort ends', (new Date().getTime() - startTime) / 1000);
+  }
+
+  async mergeSort(render) {
+    this.ref = await mergeSort(this.ref, render);
+    render(this.ref);
   }
 }

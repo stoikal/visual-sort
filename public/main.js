@@ -2,7 +2,7 @@ import './components/array-container.js';
 import './components/array-item.js';
 
 import MyArray from './myArray.js';
-import Visual from './visual.js';
+import Visual from './svgVisual.js';
 
 const ARRAY_LENGTH = 70;
 
@@ -27,6 +27,6 @@ $bubbleSortBtn.addEventListener('click', () => {
   myArray.bubbleSort(visual.render.bind(visual));
 });
 
-// $mergeSortBtn.addEventListener('click', () => {
-//   mergeSort(array.itemRefs);
-// });
+$mergeSortBtn.addEventListener('click', () => {
+  myArray.mergeSort(visual.render.bind(visual));
+});

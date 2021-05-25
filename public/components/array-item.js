@@ -13,22 +13,22 @@ template.innerHTML = `
 
     .node {
       min-height: ${NODE_SIZE}px; 
-      min-width: ${NODE_SIZE}px;
+      min-width: ${NODE_SIZE * 1.5}px;
       grid-row-start: 1;
       background: red;
     }
 
   </style>
-  <div class="vertical-bar">
-    <div class="node">
+  <div class='vertical-bar'>
+    <div class='node'>
       <slot></slot>
     </div>
   </div>
-`
+`;
 
 class ArrayItem extends HTMLElement {
   static get observedAttributes() {
-    return ['value', 'max-value', 'color']
+    return ['value', 'max-value', 'color'];
   }
 
   constructor() {
@@ -36,7 +36,7 @@ class ArrayItem extends HTMLElement {
 
     this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.append(template.content.cloneNode(true));
-    
+
     this.$verticalBar = this._shadowRoot.querySelector('.vertical-bar');
     this.$node = this._shadowRoot.querySelector('.node');
 
@@ -46,7 +46,7 @@ class ArrayItem extends HTMLElement {
   get maxValue() {
     return this.getAttribute('max-value');
   }
-  
+
   set maxValue(newValue) {
     this.setAttribute('max-value', newValue);
   }
@@ -54,7 +54,7 @@ class ArrayItem extends HTMLElement {
   get value() {
     return this.getAttribute('value');
   }
-  
+
   set value(newValue) {
     this.setAttribute('value', newValue);
   }
@@ -62,7 +62,7 @@ class ArrayItem extends HTMLElement {
   get color() {
     return this.getAttribute('color');
   }
-  
+
   set color(newValue) {
     this.setAttribute('color', newValue);
   }
@@ -73,17 +73,17 @@ class ArrayItem extends HTMLElement {
 
   attributeChangedCallback(name, prevVal, newVal) {
     if (name === 'max-value') {
-      const maxVal = Number(newVal)
+      const maxVal = Number(newVal);
       this.$verticalBar.style['grid-template-rows'] = `repeat(${newVal}, 1fr)`;
-      this.$verticalBar.style['height'] = `${maxVal * NODE_SIZE}px`;
+      this.$verticalBar.style.height = `${maxVal * NODE_SIZE}px`;
       this.$node.style['grid-row-end'] = maxVal + 1;
-    } else if (name === "color") {
+    } else if (name === 'color') {
       this.$node.style['background-color'] = newVal;
-    } else if (name === "value") {
+    } else if (name === 'value') {
       const rowStart = Number(this.maxValue) + 1 - Number(newVal);
       this.$node.style['grid-row-start'] = rowStart;
     }
   }
 }
 
-customElements.define('array-item', ArrayItem)
+customElements.define('array-item', ArrayItem);
