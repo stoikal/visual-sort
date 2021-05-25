@@ -10,16 +10,29 @@
       min-height: 100vh;
       margin: 0 auto;
       display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
       place-items: center;
     }
+
+    .container > div:first-child {
+      padding: 1em;
+    }
+
   </style>
   <title>Document</title>
 </head>
 <body>
-  <button id="randomize">randomize</button>
-  <button id="bubble-sort">bubble sort</button>
-  <button id="merge-sort" disabled>merge sort</button>
 
-  <div class="container"></div>
+  
+
+  <div class="container">
+    <div>
+      <button id="randomize">randomize</button>
+      <button id="bubble-sort">bubble sort</button>
+      <button id="merge-sort" disabled>merge sort</button>
+    </div>
+
+  </div>
 </body>
 </html>
