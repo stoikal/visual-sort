@@ -12,6 +12,7 @@
     },
     "rules": {
       "no-plusplus": "off",
-      "import/extensions": "ignorPackages"
+      "import/extensions": ["error", "ignorePackages"],
+      "no-underscore-dangle": "off"
     }
 }

@@ -1,28 +1,21 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-param-reassign */
 import { delay } from '../utils/common.js';
 
-async function bubbleSort(arr) {
-  const start = new Date();
-
+async function bubbleSort(arr, render) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < (arr.length - i - 1); j++) {
-      const curr = arr[j];
-      const next = arr[j + 1];
+      await delay(0);
 
-      curr.color = 'blue';
-      next.color = 'green';
-
-      await delay(5);
-
-      if (Number(curr.value) > Number(next.value)) {
-        const temp = curr.value;
-        curr.value = next.value;
-        next.value = temp;
+      if (arr[j] > arr[j + 1]) {
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
       }
-      curr.color = 'red';
-      next.color = 'red';
+
+      await render(arr, j);
     }
   }
-  console.log('bubble sort end', new Date().getTime() - start.getTime());
 }
 
 export default bubbleSort;
