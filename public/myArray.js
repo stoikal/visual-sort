@@ -3,6 +3,7 @@ import shuffle from './sort/shuffle.js';
 import bubbleSort from './sort/bubble.js';
 import insertionSort from './sort/insertion.js';
 import selectionSort from './sort/selection.js';
+import heapSort from './sort/heap.js';
 import mergeSort from './sort/merge.js';
 import quickSort from './sort/quick.js';
 
@@ -49,6 +50,10 @@ export default class MyArray {
 
   async selectionSort(render) {
     withTimer(selectionSort)(this.ref, render);
+  }
+
+  async heapSort(render) {
+    withTimer(heapSort)(this.ref, render);
   }
 
   async mergeSort(render) {
