@@ -3,6 +3,7 @@ import bubbleSort from './sort/bubble.js';
 import mergeSort from './sort/merge.js';
 import insertionSort from './sort/insertion.js';
 import quickSort from './sort/quick.js';
+import shuffle from './sort/shuffle.js';
 
 const withTimer = (wrapperFn) => async (...args) => {
   const startTime = new Date().getTime();
@@ -37,6 +38,10 @@ export default class MyArray {
       this.ref[currentIndex] = this.ref[randomIndex];
       this.ref[randomIndex] = temporaryValue;
     }
+  }
+
+  async shuffleVis(render) {
+    withTimer(shuffle)(this.ref, render);
   }
 
   async bubbleSort(render) {

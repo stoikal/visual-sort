@@ -1,7 +1,7 @@
 import MyArray from './myArray.js';
 import Visual from './visual.js';
 
-const ARRAY_LENGTH = 100;
+const ARRAY_LENGTH = 200;
 
 const $outerContainer = document.querySelector('.container');
 
@@ -12,27 +12,27 @@ const $insertionSortBtn = document.querySelector('#insertion-sort');
 const $quickSortBtn = document.querySelector('#quick-sort');
 
 const visual = new Visual($outerContainer, ARRAY_LENGTH);
-const myArray = new MyArray(ARRAY_LENGTH);
+const array = new MyArray(ARRAY_LENGTH);
 
 visual.init();
 
 $shuffleBtn.addEventListener('click', () => {
-  myArray.shuffle();
-  visual.render(myArray.ref);
+  array.shuffle();
+  visual.render(array.ref);
 });
 
 $bubbleSortBtn.addEventListener('click', () => {
-  myArray.bubbleSort(visual.render.bind(visual));
+  array.bubbleSort(visual.render.bind(visual));
 });
 
 $mergeSortBtn.addEventListener('click', () => {
-  myArray.mergeSort(visual.render.bind(visual));
+  array.mergeSort(visual.render.bind(visual));
 });
 
 $insertionSortBtn.addEventListener('click', () => {
-  myArray.insertionSort(visual.render.bind(visual));
+  array.insertionSort(visual.render.bind(visual));
 });
 
 $quickSortBtn.addEventListener('click', () => {
-  myArray.quickSort(visual.render.bind(visual));
+  array.quickSort(visual.render.bind(visual));
 });
