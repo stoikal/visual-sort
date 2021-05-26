@@ -1,10 +1,11 @@
 export default class Visual {
-  constructor(parentEl, arrayLength) {
+  constructor(parentEl, array) {
     this.$parentEl = parentEl;
-    this.arrayLength = arrayLength;
+    this.arrayLength = array.length;
+    this._array = array;
 
-    this._barWidth = 4;
-    this._barHeight = 3;
+    this._barWidth = 6;
+    this._barHeight = 4;
 
     this._svgns = 'http://www.w3.org/2000/svg';
 
@@ -17,8 +18,9 @@ export default class Visual {
 
   init() {
     this.$svg = document.createElementNS(this._svgns, 'svg');
-    const svgWidth = this.arrayLength * this._barWidth;
-    const svgHeight = this.arrayLength * this._barHeight;
+    const { length } = this._array;
+    const svgWidth = length * this._barWidth;
+    const svgHeight = length * this._barHeight;
 
     const $background = document.createElementNS(this._svgns, 'rect');
     $background.setAttributeNS(null, 'width', `${svgWidth}px`);
@@ -29,8 +31,7 @@ export default class Visual {
     this.$svg.setAttributeNS(null, 'height', `${svgHeight}px`);
     this.$svg.appendChild($background);
 
-    for (let i = 0; i < this.arrayLength; i++) {
-      const value = i + 1;
+    this._array.forEach((value, i) => {
       const x = i * this._barWidth;
       const y = svgHeight - value * this._barHeight;
 
@@ -42,7 +43,7 @@ export default class Visual {
       $bar.setAttributeNS(null, 'y', y);
 
       this.$svg.appendChild($bar);
-    }
+    });
 
     this.$parentEl.append(this.$svg);
   }

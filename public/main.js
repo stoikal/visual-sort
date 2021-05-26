@@ -14,8 +14,8 @@ const $selectionSortBtn = document.querySelector('#selection-sort');
 
 // TODO: shell sort, heap sort,
 
-const visual = new Visual($outerContainer, ARRAY_LENGTH);
 const array = new MyArray(ARRAY_LENGTH);
+const visual = new Visual($outerContainer, array.ref);
 
 visual.init();
 
