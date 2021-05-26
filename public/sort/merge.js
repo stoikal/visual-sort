@@ -30,7 +30,7 @@ async function mergeSort(sourceArr, render) {
         rightIndex++;
       }
       // eslint-disable-next-line no-await-in-loop
-      await delay(0);
+      await delay();
       render(snapshot, left, right);
     }
     return temp;
@@ -54,8 +54,7 @@ async function mergeSort(sourceArr, render) {
     );
   }
 
-  const result = await sortFunc(0, sourceArr);
-  return result;
+  return sortFunc(0, sourceArr);
 }
 
 export default mergeSort;

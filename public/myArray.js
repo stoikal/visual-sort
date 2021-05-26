@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import bubbleSort from './sort/bubble.js';
 import mergeSort from './sort/merge.js';
+import insertionSort from './sort/insertion.js';
 
 export default class MyArray {
   constructor(length) {
@@ -41,6 +43,13 @@ export default class MyArray {
     const startTime = new Date().getTime();
     console.log('merge sort starts');
     await mergeSort(this.ref, render);
+    console.log('merge sort ends', (new Date().getTime() - startTime) / 1000);
+  }
+
+  async insertionSort(render) {
+    const startTime = new Date().getTime();
+    console.log('insertion sort starts');
+    await insertionSort(this.ref, render);
     console.log('merge sort ends', (new Date().getTime() - startTime) / 1000);
   }
 }

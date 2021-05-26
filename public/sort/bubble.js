@@ -14,7 +14,7 @@ async function bubbleSort(arr, render) {
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
-      await delay(0);
+      await delay();
       render(arr, highlighted, highlighted2);
     }
   }
