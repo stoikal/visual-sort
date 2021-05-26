@@ -1,7 +1,7 @@
 import MyArray from './myArray.js';
 import Visual from './visual.js';
 
-const ARRAY_LENGTH = 200;
+const ARRAY_LENGTH = 100;
 
 const $outerContainer = document.querySelector('.container');
 
@@ -10,8 +10,9 @@ const $bubbleSortBtn = document.querySelector('#bubble-sort');
 const $mergeSortBtn = document.querySelector('#merge-sort');
 const $insertionSortBtn = document.querySelector('#insertion-sort');
 const $quickSortBtn = document.querySelector('#quick-sort');
+const $selectionSortBtn = document.querySelector('#selection-sort');
 
-// TODO: selection sort, shell sort, heap sort,
+// TODO: shell sort, heap sort,
 
 const visual = new Visual($outerContainer, ARRAY_LENGTH);
 const array = new MyArray(ARRAY_LENGTH);
@@ -37,4 +38,8 @@ $insertionSortBtn.addEventListener('click', () => {
 
 $quickSortBtn.addEventListener('click', () => {
   array.quickSort(visual.render.bind(visual));
+});
+
+$selectionSortBtn.addEventListener('click', () => {
+  array.selectionSort(visual.render.bind(visual));
 });

@@ -3,8 +3,8 @@ export default class Visual {
     this.$parentEl = parentEl;
     this.arrayLength = arrayLength;
 
-    this._barWidth = 3;
-    this._barHeight = 2;
+    this._barWidth = 4;
+    this._barHeight = 3;
 
     this._svgns = 'http://www.w3.org/2000/svg';
 
