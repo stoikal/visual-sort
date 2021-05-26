@@ -13,17 +13,17 @@ export default class MyArray {
     this.length = length;
   }
 
+  // Fisher-Yates shuffle
+  // https://bost.ocks.org/mike/shuffle/
   shuffle() {
     let currentIndex = this.ref.length;
     let temporaryValue;
     let randomIndex;
 
     while (currentIndex !== 0) {
-    // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
 
-      // And swap it with the current element.
       temporaryValue = this.ref[currentIndex];
       this.ref[currentIndex] = this.ref[randomIndex];
       this.ref[randomIndex] = temporaryValue;
@@ -38,7 +38,9 @@ export default class MyArray {
   }
 
   async mergeSort(render) {
-    this.ref = await mergeSort(this.ref, render);
-    render(this.ref);
+    const startTime = new Date().getTime();
+    console.log('merge sort starts');
+    await mergeSort(this.ref, render);
+    console.log('merge sort ends', (new Date().getTime() - startTime) / 1000);
   }
 }

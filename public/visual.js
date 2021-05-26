@@ -25,11 +25,7 @@ export default class Visual {
    * straight to dom = 13.4s, 70.085s
    */
   async render(array, highlighted, highlighted2) {
-    const startTime = new Date().getTime();
-    // console.log('render start', new Date().getTime() - startTime);
     this._clear();
-    // console.log('after clear', new Date().getTime() - startTime);
-    // this.$arrayContainer = document.createElement('array-container');
     this.$arrayContainer.length = array.length;
 
     const $docFrag = document.createDocumentFragment();
@@ -47,9 +43,8 @@ export default class Visual {
 
       $docFrag.append($newArrayItem);
     });
-    // console.log('after forEach', new Date().getTime() - startTime);
+
     this.$arrayContainer.append($docFrag);
     this.$parentEl.append(this.$arrayContainer);
-    // console.log('finish', new Date().getTime() - startTime);
   }
 }

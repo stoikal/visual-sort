@@ -4,7 +4,7 @@ import './components/array-item.js';
 import MyArray from './myArray.js';
 import Visual from './svgVisual.js';
 
-const ARRAY_LENGTH = 70;
+const ARRAY_LENGTH = 100;
 
 const $outerContainer = document.querySelector('.container');
 
@@ -16,7 +16,6 @@ const visual = new Visual($outerContainer, ARRAY_LENGTH);
 const myArray = new MyArray(ARRAY_LENGTH);
 
 visual.init();
-// visual.render(myArray.ref);
 
 $shuffleBtn.addEventListener('click', () => {
   myArray.shuffle();
