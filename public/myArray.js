@@ -2,7 +2,14 @@
 import bubbleSort from './sort/bubble.js';
 import mergeSort from './sort/merge.js';
 import insertionSort from './sort/insertion.js';
+import quickSort from './sort/quick.js';
 
+const withTimer = (wrapperFn) => async (...args) => {
+  const startTime = new Date().getTime();
+  console.log('starting');
+  await wrapperFn(...args);
+  console.log('finished', `${(new Date().getTime() - startTime) / 1000}s`);
+};
 export default class MyArray {
   constructor(length) {
     const arr = [];
@@ -33,23 +40,18 @@ export default class MyArray {
   }
 
   async bubbleSort(render) {
-    const startTime = new Date().getTime();
-    console.log('bubble sort starts');
-    await bubbleSort(this.ref, render);
-    console.log('bubble sort ends', (new Date().getTime() - startTime) / 1000);
+    withTimer(bubbleSort)(this.ref, render);
   }
 
   async mergeSort(render) {
-    const startTime = new Date().getTime();
-    console.log('merge sort starts');
-    await mergeSort(this.ref, render);
-    console.log('merge sort ends', (new Date().getTime() - startTime) / 1000);
+    withTimer(mergeSort)(this.ref, render);
   }
 
   async insertionSort(render) {
-    const startTime = new Date().getTime();
-    console.log('insertion sort starts');
-    await insertionSort(this.ref, render);
-    console.log('merge sort ends', (new Date().getTime() - startTime) / 1000);
+    withTimer(insertionSort)(this.ref, render);
+  }
+
+  async quickSort(render) {
+    withTimer(quickSort)(this.ref, render);
   }
 }
