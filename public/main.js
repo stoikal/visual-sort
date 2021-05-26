@@ -1,5 +1,5 @@
 import MyArray from './myArray.js';
-import Visual from './svgVisual.js';
+import Visual from './visual.js';
 
 const ARRAY_LENGTH = 100;
 
