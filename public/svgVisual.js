@@ -3,10 +3,16 @@ export default class Visual {
     this.$parentEl = parentEl;
     this.arrayLength = arrayLength;
 
-    this._barWidth = 6;
-    this._barHeight = 4;
+    this._barWidth = 3;
+    this._barHeight = 2;
 
     this._svgns = 'http://www.w3.org/2000/svg';
+
+    this._colorBg = '#83C5BE';
+    this._colorBar = '#CD5334';
+    // this._colorHl1 = '#0C6291';
+    this._colorHl1 = '#F9CB40';
+    this._colorHl2 = '#F9CB40';
   }
 
   init() {
@@ -17,7 +23,7 @@ export default class Visual {
     const $background = document.createElementNS(this._svgns, 'rect');
     $background.setAttributeNS(null, 'width', `${svgWidth}px`);
     $background.setAttributeNS(null, 'height', `${svgHeight}px`);
-    $background.setAttributeNS(null, 'fill', 'grey');
+    $background.setAttributeNS(null, 'fill', this._colorBg);
 
     this.$svg.setAttributeNS(null, 'width', `${svgWidth}px`);
     this.$svg.setAttributeNS(null, 'height', `${svgHeight}px`);
@@ -31,7 +37,7 @@ export default class Visual {
       const $bar = document.createElementNS(this._svgns, 'rect');
       $bar.setAttributeNS(null, 'width', `${this._barWidth}px`);
       $bar.setAttributeNS(null, 'height', `${value * this._barHeight}px`);
-      $bar.setAttributeNS(null, 'fill', 'red');
+      $bar.setAttributeNS(null, 'fill', this._colorBar);
       $bar.setAttributeNS(null, 'x', x);
       $bar.setAttributeNS(null, 'y', y);
 
@@ -67,14 +73,14 @@ export default class Visual {
 
       $bar.setAttributeNS(null, 'width', `${this._barWidth}px`);
       $bar.setAttributeNS(null, 'height', `${value * this._barHeight}px`);
-      $bar.setAttributeNS(null, 'fill', 'red');
+      $bar.setAttributeNS(null, 'fill', this._colorBar);
       $bar.setAttributeNS(null, 'x', x);
       $bar.setAttributeNS(null, 'y', y);
 
       if (value === highlighted) {
-        $bar.setAttributeNS(null, 'fill', 'blue');
+        $bar.setAttributeNS(null, 'fill', this._colorHl1);
       } else if (value === highlighted2) {
-        $bar.setAttributeNS(null, 'fill', 'green');
+        $bar.setAttributeNS(null, 'fill', this._colorHl2);
       }
     });
   }

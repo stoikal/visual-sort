@@ -1,10 +1,7 @@
-import './components/array-container.js';
-import './components/array-item.js';
-
 import MyArray from './myArray.js';
 import Visual from './svgVisual.js';
 
-const ARRAY_LENGTH = 100;
+const ARRAY_LENGTH = 200;
 
 const $outerContainer = document.querySelector('.container');
 

@@ -3,7 +3,7 @@ import { delay } from '../utils/common.js';
 async function mergeSort(sourceArr, render) {
   const snapshot = [...sourceArr];
 
-  async function merge([leftStart, leftArr], [rightStart, rightArr]) {
+  async function merge([leftStart, leftArr], [, rightArr]) {
     const temp = [];
     let leftIndex = 0;
     let rightIndex = 0;
@@ -30,7 +30,7 @@ async function mergeSort(sourceArr, render) {
         rightIndex++;
       }
       // eslint-disable-next-line no-await-in-loop
-      await delay(10);
+      await delay(0);
       render(snapshot, left, right);
     }
     return temp;
