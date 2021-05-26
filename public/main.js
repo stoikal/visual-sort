@@ -11,6 +11,8 @@ const $mergeSortBtn = document.querySelector('#merge-sort');
 const $insertionSortBtn = document.querySelector('#insertion-sort');
 const $quickSortBtn = document.querySelector('#quick-sort');
 
+// TODO: selection sort, shell sort, heap sort,
+
 const visual = new Visual($outerContainer, ARRAY_LENGTH);
 const array = new MyArray(ARRAY_LENGTH);
 

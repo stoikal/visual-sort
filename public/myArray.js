@@ -13,13 +13,7 @@ const withTimer = (wrapperFn) => async (...args) => {
 };
 export default class MyArray {
   constructor(length) {
-    const arr = [];
-
-    for (let i = 0; i < length; i++) {
-      arr.push(i + 1);
-    }
-
-    this.ref = arr;
+    this.ref = Array.from({ length }, (elmt, i) => i + 1);
     this.length = length;
   }
 
