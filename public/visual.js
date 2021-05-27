@@ -67,22 +67,25 @@ export default class Visual {
     const svgChildren = this.$svg.querySelectorAll('rect');
 
     array.forEach((value, i) => {
-      const x = i * this._barWidth;
-      const y = svgHeight - value * this._barHeight;
-
       const $bar = svgChildren[i + 1];
+      const y = svgHeight - value * this._barHeight;
+      let color;
 
-      $bar.setAttributeNS(null, 'width', `${this._barWidth}px`);
-      $bar.setAttributeNS(null, 'height', `${value * this._barHeight}px`);
-      $bar.setAttributeNS(null, 'fill', this._colorBar);
-      $bar.setAttributeNS(null, 'x', x);
-      $bar.setAttributeNS(null, 'y', y);
-
-      if (value === highlighted) {
-        $bar.setAttributeNS(null, 'fill', this._colorHl1);
-      } else if (value === highlighted2) {
-        $bar.setAttributeNS(null, 'fill', this._colorHl2);
+      switch (value) {
+        case highlighted:
+          color = this._colorHl1;
+          break;
+        case highlighted2:
+          color = this._colorHl1;
+          break;
+        default:
+          color = this._colorBar;
+          break;
       }
+
+      $bar.setAttributeNS(null, 'height', `${value * this._barHeight}px`);
+      $bar.setAttributeNS(null, 'fill', color);
+      $bar.setAttributeNS(null, 'y', y);
     });
   }
 }
