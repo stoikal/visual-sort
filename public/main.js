@@ -7,13 +7,12 @@ const $outerContainer = document.querySelector('.container');
 
 const $shuffleBtn = document.querySelector('#shuffle');
 const $bubbleSortBtn = document.querySelector('#bubble-sort');
-const $mergeSortBtn = document.querySelector('#merge-sort');
-const $insertionSortBtn = document.querySelector('#insertion-sort');
-const $quickSortBtn = document.querySelector('#quick-sort');
 const $selectionSortBtn = document.querySelector('#selection-sort');
+const $insertionSortBtn = document.querySelector('#insertion-sort');
 const $heapSortBtn = document.querySelector('#heap-sort');
-
-// TODO: shell sort, heap sort,
+const $shellSortBtn = document.querySelector('#shell-sort');
+const $mergeSortBtn = document.querySelector('#merge-sort');
+const $quickSortBtn = document.querySelector('#quick-sort');
 
 const array = new MyArray(ARRAY_LENGTH);
 const visual = new Visual($outerContainer, array.ref);
@@ -39,6 +38,10 @@ $insertionSortBtn.addEventListener('click', () => {
 
 $heapSortBtn.addEventListener('click', () => {
   array.heapSort(visual.render.bind(visual));
+});
+
+$shellSortBtn.addEventListener('click', () => {
+  array.shellSort(visual.render.bind(visual));
 });
 
 $mergeSortBtn.addEventListener('click', () => {
