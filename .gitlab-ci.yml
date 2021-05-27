@@ -1,12 +1,17 @@
-image: alpine:latest
+image: node:14.16.0
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
 
 pages:
-  stage: deploy
   script:
-  - echo 'Nothing to do...'
+    - npm run build
   artifacts:
     paths:
-    - public
-    expire_in: 1 day
+      - public
   only:
-  - master
+    - master

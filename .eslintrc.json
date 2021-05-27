@@ -12,7 +12,6 @@
     },
     "rules": {
       "no-plusplus": "off",
-      "import/extensions": ["error", "ignorePackages"],
       "no-underscore-dangle": "off",
       "no-param-reassign": "off"
     }
