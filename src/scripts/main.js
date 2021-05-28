@@ -1,3 +1,6 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 import MyArray from './myArray';
 import Visual from './visual';
 
