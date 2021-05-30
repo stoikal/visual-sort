@@ -1,3 +1,3 @@
 ## Page:
 
-[https://xlwpa.gitlab.io/array-sort](https://xlwpa.gitlab.io/array-sort)
+[https://xlaks.github.io/visual-sort](https://xlaks.github.io/visual-sort)
