@@ -8,7 +8,8 @@
     "start-dev": "webpack serve",
     "lint": "eslint . --fix",
     "build": "webpack",
-    "deploy": "webpack && gh-pages -d public"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "keywords": [],
   "author": "",
